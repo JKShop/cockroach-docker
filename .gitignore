@@ -1,0 +1,8 @@
+ssl/my-safe-directory/
+*.old
+*.txt
+*.attr
+*.pem
+*.crt
+*.key
+*.csr

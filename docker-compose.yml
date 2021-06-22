@@ -1,0 +1,34 @@
+version: "3.2"
+services: 
+    node_1:
+        container_name: node_1
+        image: cockroachdocker
+        volumes: 
+            - node_1:/cockroach
+        expose:
+            - 26257
+            - 8080
+        networks:
+            - cockroachdb_net
+        environment: 
+            - JOINADDR=node_1:25257,node_2:25257
+    node_2:
+        container_name: node_2
+        image: cockroachdocker
+        volumes: 
+            - node_2:/cockroach
+        expose:
+            - 26257
+            - 8080
+        networks:
+            - cockroachdb_net
+        environment: 
+            - JOINADDR=node_1:25257,node_2:25257
+
+
+networks: 
+    cockroachdb_net:
+
+volumes: 
+    node_1:
+    node_2:
